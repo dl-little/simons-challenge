@@ -39,6 +39,9 @@ As a consideration for accessibility, I wrapped the cards in an unordered list. 
 
 I found myself spending too much time on trying to nail the styling exactly on this one, and I had to move on to ensure I finished. The main thing that I couldn't crack is the maintaining of the size of the cards when the viewport shrinks. I added `flex-grow: 1` to my card items so that when the viewport shrinks for mobile, the cards will grow to take up the full-width of the viewport. With this value for flex-grow though, when the card items wrap on desktop and tablet, they're growing to take up the full-width. Without a media query and in the time alloted, I couldn't figure out how to exactly match the spec.
 
+- **_THE FOLLOWING UPDATE WAS WRITTEN AFTER SUBMISSION WINDOW_**
+  - In <a href="./update/StylingAndSemantics-update.html">this update file</a>, which was **created after the submission window**, I spent a few more minutes to get closer to the specification. In my original submission, I used flexbox for the card layout, but in the update I use CSS grid with auto-fill columns. Additionally, I extracted the svg from the external image so that it can be colored white.
+
 ## Question 3: Loading and Execution of JS
 
 The problem with the initial definition of loadScript is that helloWorld will not be defined by the time it is called. This will result in a reference error.
