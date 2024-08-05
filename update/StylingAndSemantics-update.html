@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>HTML/CSS Challenge</title>
+      <meta name="viewport" content="width=device-width; initial-scale=1.0;" />
+      <style>
+        /* Reset */
+        body, * {
+          padding: 0;
+          margin: 0;
+        }
+
+        /* Body */
+        body > *:not(:first-child) {
+          margin-block-start: 1rem;
+        }
+
+        /* Header */
+        header {
+          background: #1D2954;
+          padding: 1rem;
+          color: white;
+        }
+
+        h1 {
+          font-size: 32px;
+        }
+
+        h1 svg {
+          margin-right: 1rem;
+        }
+
+        /* Main */
+        main {
+          padding: 1rem;
+          margin-left: auto;
+          margin-right: auto;
+          display: flex;
+          justify-content: center;
+        }
+
+        #card-list * {
+          max-width: 100%;
+        }
+
+        #card-list {
+          width: 100%;
+          max-width: 1200px;
+          list-style-type: none;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(calc(320px - 1rem), 1fr));
+          gap: 1rem;
+        }
+
+        .card {
+          display: block;
+          text-decoration: none;
+          padding: 1rem;
+        }
+
+        .card > *:not(:first-child, .meta) {
+          margin-block-start: 1rem;
+        }
+
+        .card:hover, .card:focus, .card:focus-within {
+          background: #EEE;
+          outline: 2px solid #1E1E1E;
+        }
+
+        h2 {
+          font-size: 24px;
+          color: #1D2954;
+        }
+
+        .meta, .teaser {
+          color: black;
+        }
+
+        .meta {
+          font-size: 14px;
+        }
+
+        .teaser {
+          font-size: 16px;
+        }
+      </style>
+    </head>
+  <body>
+    <header>
+        <h1>
+          <svg width="120" height="34" viewBox="0 0 120 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_237_3258)">
+              <path fill="currentColor" d="M1.7041 33.8961V28.5166H5.39746V29.1331H2.44277V30.9178H4.76959V31.5287H2.44277V33.8933L1.7041 33.8961Z" />
+              <path fill="currentColor" d="M15.9314 34.0001C14.3461 34.0001 13.2324 32.8741 13.2324 31.2076C13.2324 29.5411 14.3461 28.415 15.9314 28.415C17.5167 28.415 18.6276 29.5411 18.6276 31.2076C18.6276 32.8741 17.5082 34.0001 15.9314 34.0001ZM15.9314 29.0456C14.7581 29.0456 13.9995 29.8901 13.9995 31.2076C13.9995 32.525 14.7581 33.3667 15.9314 33.3667C17.1048 33.3667 17.852 32.5222 17.852 31.2076C17.852 29.8929 17.1019 29.0456 15.9314 29.0456Z" />
+              <path fill="currentColor" d="M26.9385 31.8383V28.5166H27.68V31.8468C27.68 32.8715 28.1885 33.3754 29.1374 33.3754C30.0864 33.3754 30.6091 32.8715 30.6091 31.8552V28.5166H31.3421V31.8383C31.3421 33.4091 30.3591 34.0003 29.1374 34.0003C27.9158 34.0003 26.9385 33.4091 26.9385 31.8383Z" />
+              <path fill="currentColor" d="M43.6497 32.6322V28.5166H44.3486V33.8961H43.752L40.5984 29.5751V33.8961H39.9023V28.5166H40.6779L43.6497 32.6322Z" />
+              <path fill="currentColor" d="M52.9854 28.5166H54.9485C56.6531 28.5166 57.7327 29.5244 57.7327 31.2078C57.7327 32.8912 56.656 33.8961 54.9485 33.8961H52.9854V28.5166ZM54.9059 33.3022C56.2327 33.3022 56.9571 32.5252 56.9571 31.219C56.9571 29.9129 56.2327 29.1359 54.9059 29.1359H53.7354V33.3022H54.9059Z" />
+              <path fill="currentColor" d="M68.4686 28.5166L70.7415 33.8961H69.9488L69.2925 32.3169H66.818L66.1816 33.8961H65.4287L67.6447 28.5166H68.4686ZM67.0481 31.7286H69.0368L68.0453 29.3386H68.0112L67.0481 31.7286Z" />
+              <path fill="currentColor" d="M79.9013 33.8961V29.1331H77.9268V28.5166H82.6486V29.1331H80.6399V33.8961H79.9013Z" />
+              <path fill="currentColor" d="M91.6914 28.5166V33.8961H90.9414V28.5166H91.6914Z" />
+              <path fill="currentColor" d="M102.774 34.0001C101.189 34.0001 100.075 32.8741 100.075 31.2076C100.075 29.5411 101.189 28.415 102.774 28.415C104.359 28.415 105.47 29.5411 105.47 31.2076C105.47 32.8741 104.351 34.0001 102.774 34.0001ZM102.774 29.0456C101.601 29.0456 100.842 29.8901 100.842 31.2076C100.842 32.525 101.601 33.3667 102.774 33.3667C103.948 33.3667 104.695 32.5222 104.695 31.2076C104.695 29.8929 103.945 29.0456 102.774 29.0456Z" />
+              <path fill="currentColor" d="M117.599 32.6322V28.5166H118.295V33.8961H117.701L114.548 29.5751V33.8961H113.849V28.5166H114.624L117.599 32.6322Z" />
+              <path fill="currentColor" d="M4.19075 14.9204C4.37259 18.4563 6.95807 20.0441 10.1572 20.0441C12.9984 20.0441 14.8225 18.918 14.8225 17.0121C14.8225 15.2808 13.436 14.6305 11.0323 14.1603L6.66543 13.3552C3.09689 12.7049 0.619379 10.7568 0.619379 7.00135C0.619379 2.7448 4.00608 0 9.37592 0C15.3737 0 18.7518 3.06854 18.8342 8.12179L14.6463 8.26537C14.4986 5.16867 12.4586 3.53868 9.32762 3.53868C6.63133 3.53868 5.11414 4.7295 5.11414 6.6776C5.11414 8.33856 6.31596 8.92975 8.39287 9.31261L12.6206 10.0699C17.121 10.9004 19.2348 13.0315 19.2348 16.7137C19.2348 21.1899 15.3367 23.6081 10.1629 23.6081C4.26178 23.6081 0 20.5761 0 15.0894L4.19075 14.9204Z" />
+              <path fill="currentColor" d="M26.0791 0.433594V23.1746H21.5332V0.433594H26.0791Z" />
+              <path fill="currentColor" d="M57.3927 23.1746C55.6255 21.841 54.193 20.121 53.2069 18.1487C52.2208 16.1764 51.7078 14.0051 51.7078 11.8041C51.7078 9.60306 52.2208 7.43175 53.2069 5.45946C54.193 3.48717 55.6255 1.76718 57.3927 0.433594H46.295L41.5246 16.9643H41.4138L36.3878 0.433594H29.2109V23.1746H33.4358V5.27007H33.5807L39.192 23.1746H43.0901L48.585 5.27007H48.7299V23.1746H57.3927Z" />
+              <path fill="currentColor" d="M104.963 14.9222C105.145 18.4585 107.734 20.0465 110.931 20.0465C113.772 20.0465 115.594 18.9203 115.594 17.0142C115.594 15.2826 114.21 14.6322 111.806 14.162L107.433 13.3681C103.861 12.7177 101.386 10.7694 101.386 7.01345C101.394 2.74513 104.782 0 110.138 0C116.151 0 119.538 3.06891 119.62 8.12277L115.429 8.26636C115.284 5.16929 113.244 3.5391 110.109 3.5391C107.413 3.5391 105.884 4.73007 105.884 6.67841C105.884 8.33956 107.086 8.93082 109.163 9.31373L113.369 10.0711C117.887 10.9017 120.001 13.033 120.001 16.7157C120.001 21.1924 116.102 23.6109 110.928 23.6109C105.026 23.6109 100.764 20.5786 100.764 15.0912L104.963 14.9222Z" />
+              <path fill="currentColor" d="M94.6939 0.433594V15.5952L83.8364 0.433594H74.8799C76.6473 1.76734 78.08 3.48754 79.0662 5.46007C80.0524 7.43259 80.5655 9.60416 80.5655 11.8055C80.5655 14.0068 80.0524 16.1783 79.0662 18.1509C78.08 20.1234 76.6473 21.8436 74.8799 23.1773H83.5323V7.1486L95.265 23.1773H98.9079V0.433594H94.6939Z" />
+            </g>
+            <defs>
+              <clipPath id="clip0_237_3258">
+              <rect width="120" height="34" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+            HTML/CSS Challenge
+        </h1>
+    </header>
+    <main class="cards">
+      <ul id="card-list">
+        <li class="card-item">
+          <a class="card" href="#">
+            <h2>Article title</h2>
+            <img src="https://simonsfoundation.imgix.net/wp-content/uploads/2024/05/09141203/IMG_2581-scaled.jpg?auto=format&w=1020&q=90&dpr=2" />
+            <div class="meta">
+                <p>by Author Name</p>
+                <p>Jan 1, 1970</p>
+            </div>
+            <div class="teaser">
+                <p>From which we spring rich in mystery muse about a mote of dust suspended in a sunbeam Cambrian explosion courage of our questions? Something incredible is waiting to be known stirred by starlight the carbon in our apple pies vanquish the impossible citizens of distant epochs stirred by starlight?</p>
+            </div>
+          </a>
+        </li>
+        <li class="card-item">
+          <a class="card" href="#">
+            <h2>Article title</h2>
+            <img src="https://simonsfoundation.imgix.net/wp-content/uploads/2024/05/09141203/IMG_2581-scaled.jpg?auto=format&w=1020&q=90&dpr=2" />
+            <div class="meta">
+                <p>by Author Name</p>
+                <p>Jan 1, 1970</p>
+            </div>
+            <div class="teaser">
+                <p>From which we spring rich in mystery muse about a mote of dust suspended in a sunbeam Cambrian explosion courage of our questions? Something incredible is waiting to be known stirred by starlight the carbon in our apple pies vanquish the impossible citizens of distant epochs stirred by starlight?</p>
+            </div>
+          </a>
+        </li>
+        <li class="card-item">
+          <a class="card" href="#">
+            <h2>Article title</h2>
+            <img src="https://simonsfoundation.imgix.net/wp-content/uploads/2024/05/09141203/IMG_2581-scaled.jpg?auto=format&w=1020&q=90&dpr=2" />
+            <div class="meta">
+                <p>by Author Name</p>
+                <p>Jan 1, 1970</p>
+            </div>
+            <div class="teaser">
+                <p>From which we spring rich in mystery muse about a mote of dust suspended in a sunbeam Cambrian explosion courage of our questions? Something incredible is waiting to be known stirred by starlight the carbon in our apple pies vanquish the impossible citizens of distant epochs stirred by starlight?</p>
+            </div>
+          </a>
+        </li>
+        <li class="card-item">
+          <a class="card" href="#">
+            <h2>Article title</h2>
+            <img src="https://simonsfoundation.imgix.net/wp-content/uploads/2024/05/09141203/IMG_2581-scaled.jpg?auto=format&w=1020&q=90&dpr=2" />
+            <div class="meta">
+                <p>by Author Name</p>
+                <p>Jan 1, 1970</p>
+            </div>
+            <div class="teaser">
+                <p>From which we spring rich in mystery muse about a mote of dust suspended in a sunbeam Cambrian explosion courage of our questions? Something incredible is waiting to be known stirred by starlight the carbon in our apple pies vanquish the impossible citizens of distant epochs stirred by starlight?</p>
+            </div>
+          </a>
+        </li>
+        <li class="card-item">
+          <a class="card" href="#">
+            <h2>Article title</h2>
+            <img src="https://simonsfoundation.imgix.net/wp-content/uploads/2024/05/09141203/IMG_2581-scaled.jpg?auto=format&w=1020&q=90&dpr=2" />
+            <div class="meta">
+                <p>by Author Name</p>
+                <p>Jan 1, 1970</p>
+            </div>
+            <div class="teaser">
+                <p>From which we spring rich in mystery muse about a mote of dust suspended in a sunbeam Cambrian explosion courage of our questions? Something incredible is waiting to be known stirred by starlight the carbon in our apple pies vanquish the impossible citizens of distant epochs stirred by starlight?</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </main>
+  <body>
+</html>
