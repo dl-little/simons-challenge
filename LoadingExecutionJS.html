@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <script>
+      // Suppose the following script is running on a web page.
+      // Can you please tell us what the execution result would be? Can you please explain why?
+
+      // ANSWER: The result of the following would be a reference error since helloWorld would not be defined yet by the time it is called.
+      function loadScript(src) {
+        let script = document.createElement('script');
+        script.src = src;
+        document.head.append(script);
+      }
+      loadScript('/js/main.js');
+      helloWorld(); //assuming function helloWorld is in file /js/main.js
+
+      //Follow-up question:
+      //How would you improve function loadScript to make the script work? Please explain your thought.
+
+      //-----------------------------------------------------//
+      //solution1:
+      //(Hint: onload event)
+
+      function loadScript(src, callback) {
+        let script = document.createElement('script');
+        script.src = src;
+        script.onload = () => callback();
+        // or script.addEventListener('load', ()=>callback());
+        document.head.append(script);
+      }
+      loadScript('/js/main.js', () => helloWorld());
+    </script>
+
+    <!-- SOLUTION 2: Await a promise. -->
+    <script type="module">
+      const loadScript = (src) => {
+        return new Promise((resolve) => {
+          let script = document.createElement('script');
+          script.src = src;
+          document.head.append(script);
+          script.onload = resolve;
+        });
+      };
+      await loadScript('/js/main.js');
+      helloWorld();
+    </script>
+  </head>
+  <body>
+    ... ...
+  </body>
+</html>

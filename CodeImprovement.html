@@ -1,0 +1,166 @@
+<!-- 
+How would you change the following codes to improve accessibility, performance, security, legibility, and scalability? 
+
+Answers I"m looking for:
+Accessibility–the button click must have some kind of accessibility indicator that the form will show
+Accessibility–you need labels for form elements
+Accessibility–heading is skipping from h1 to h3
+Accessibility–img has no alt 
+Accessibility–img is using gif, which can animate for longer than 5 seconds
+Accessibility–anchor tag has no text
+Accessibility–using div instead for select is not the most accessible
+Legibility–Indentation
+Legibility–use of single and double quotes
+Legibility–there is no comment to help others
+Legibility, Scalability–repeat the same value without assigning it to a variable
+Performance–-keep computing length
+Performance–the while loop is not going to end
+Performance–why are we adding a Math.pow in the while loop? Ask ourselves before adding any computation in the codes. Do we need it?
+Performance–keep changing DOM is expensive in the while loop
+Performance–no need to keep looking for document.querySelector(".form")
+Security–input needs to be sanitized
+Security–GET is less secure than POST
+Security–console logging errors is not secure
+Scalability–use of classnames in js makes the codes not as scalable
+Scalability–use of the generic classnames like form, select make the codes not as scalable
+-->
+
+<!-- 
+  Followed w3.org's disclosure pattern: https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/
+  This pattern has "two elements: a disclosure button and a section of content whose visibility is controlled by the button."
+
+  To improve upon this code, we could add a visual indicator like a triangle to hint that the button will reveal hidden content.
+  For now, I"ve updated the button text to be more descriptive.
+-->
+
+<h1>Form</h1>
+<button
+  type="button"
+  id="show-search"
+  aria-controls="search-form"
+  aria-expanded="false"
+>
+  Toggle Search Form
+</button>
+
+<!-- 
+  I"ve updated the form class from "form" to "form-primary". 
+  My thinking here is that "form-primary" could be something like a reusable tailwind class created with "@apply":
+  https://tailwindcss.com/docs/reusing-styles#extracting-classes-with-apply
+  This way, the class could be used to apply baseline styles to other forms.
+-->
+<form
+  method="post"
+  action="/search.php"
+  id="search-form"
+  class="form-primary"
+  style="display: none"
+>
+  <a href="/">
+    <!-- Accessibility: 
+     Since the anchor tag links back to the homepage, I"m assuming that this image is decorative, like a home-icon.
+     I"m considering the image as decorative because I"ve added link text to the anchor tag, explaining that it links back to the homepage.
+     The image would be considered supplementary to link text, or illustrative of adjacent text without contributing information.
+     Because the image is decorative, adding an empty alt text will cause assistive technologies to ignore the image.
+     This is desired because adding the alt text could add audible clutter to screen reader output.
+     Source: https://www.w3.org/WAI/tutorials/images/decorative/
+    -->
+    <img src="/home-icon.png" alt="" />
+    Return to home
+  </a>
+  <div role="search">
+    <label for="site-search">Search the site:</label>
+    <input
+      required="true"
+      type="text"
+      name="site-search"
+      id="site-search"
+      class="input-text"
+    />
+    <label for="search-sort">Select how to order search results:</label>
+    <select id="search-sort" required="true">
+      <option value="oldest">Oldest</option>
+      <option value="latest">Latest</option>
+    </select>
+  </div>
+  <input type="submit" id="submit-search" value="Search" />
+  <p id="search-message" role="alert"></p>
+</form>
+
+<script>
+  // By wrapping the script in a the window onload event listener,
+  // we don"t have to check for the existence of DOM elements.
+  window.addEventListener('load', function () {
+    const showSearch = document.getElementById('show-search');
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.getElementById('site-search');
+    const searchSort = document.getElementById('search-sort');
+    const searchMessage = document.getElementById('search-message');
+    const currentLocationSearchStr = location.search;
+
+    /**
+     * Toggles the appearance of the search form.
+     * Toggles the aria-expanded attribute on the show-search button.
+     */
+    showSearch.addEventListener('click', (e) => {
+      searchForm.style.display =
+        searchForm.style.display === 'block' ? 'none' : 'block';
+      showSearch.ariaExpanded = showSearch.ariaExpanded !== 'true';
+    });
+
+    /**
+     * Initialize the search input with the existing search parameters.
+     *
+     * I removed the inputValue variable in favor of two return statements.
+     */
+    const getInputVal = () => {
+      let searchStartSubStr = currentLocationSearchStr.indexOf('?s=') + 3;
+
+      if (!currentLocationSearchStr.includes('&')) {
+        return currentLocationSearchStr.substring(searchStartSubStr);
+      }
+
+      return currentLocationSearchStr.substring(
+        searchStartSubStr,
+        currentLocationSearchStr.indexOf('&')
+      );
+    };
+
+    searchInput.value = getInputVal();
+
+    /**
+     * On change of sort order, add sort parameter to window.location.href.
+     * I"m not sure the purpose of this, since reassigning window.location reloads the page,
+     * and I can feel myself spending too much time on this first assignment, so I"m going to leave it.
+     *
+     * Now that the order is a select element, it will be included in the form data, so the processing of search.php
+     * can modify the response according to sort selection.
+     */
+    searchSort.addEventListener('change', (e) => {
+      window.location.assign(window.location.href + '?sort=' + e.target.value);
+    });
+
+    /**
+     * Handle submission of form.
+     */
+    searchForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      try {
+        const response = await fetch(searchForm.action);
+
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+
+        const answer = await response.json();
+
+        searchMessage.innerHTML = `Search results: ${JSON.stringify(answer)}`;
+      } catch (err) {
+        // process error
+        searchMessage.innerHTML =
+          'Something went wrong. Please try again later.';
+      }
+    });
+  });
+</script>

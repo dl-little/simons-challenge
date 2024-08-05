@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>HTML/CSS Challenge</title>
+      <meta name="viewport" content="width=device-width; initial-scale=1.0;" />
+      <style>
+        /* Reset */
+        body, * {
+          padding: 0;
+          margin: 0;
+        }
+
+        /* Body */
+        body > *:not(:first-child) {
+          margin-block-start: 1rem;
+        }
+
+        /* Header */
+        header {
+          background: #1D2954;
+          padding: 1rem;
+          color: white;
+        }
+
+        h1 {
+          font-size: 32px;
+        }
+
+        h1 img {
+          margin-right: 1rem;
+        }
+
+        /* Main */
+        main {
+          padding: 1rem;
+          margin-left: auto;
+          margin-right: auto;
+          display: flex;
+          justify-content: center;
+        }
+
+        #card-list * {
+          max-width: 100%;
+        }
+
+        #card-list {
+          max-width: 1040px;
+          list-style-type: none;
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: flex-start;
+          gap: 1rem;
+        }
+
+        .card-item {
+          flex-grow: 1;
+          flex-shrink: 0;
+          flex-basis: calc(350px - 1rem);
+        }
+
+        .card {
+          display: block;
+          text-decoration: none;
+          padding: 1rem;
+        }
+
+        .card > *:not(:first-child, .meta) {
+          margin-block-start: 1rem;
+        }
+
+        .card:hover, .card:focus, .card:focus-within {
+          background: #EEE;
+          outline: 2px solid #1E1E1E;
+        }
+
+        h2 {
+          font-size: 24px;
+          color: #1D2954;
+        }
+
+        .meta, .teaser {
+          color: black;
+        }
+
+        .meta {
+          font-size: 14px;
+        }
+
+        .teaser {
+          font-size: 16px;
+        }
+      </style>
+    </head>
+  <body>
+    <header>
+        <h1>
+            <img src="https://www.simonsfoundation.org/app/themes/simonsfoundation/frontend/icons/logo.svg" />
+            HTML/CSS Challenge
+        </h1>
+    </header>
+    <main class="cards">
+      <ul id="card-list">
+        <li class="card-item">
+          <a class="card" href="#">
+            <h2>Article title</h2>
+            <img src="https://simonsfoundation.imgix.net/wp-content/uploads/2024/05/09141203/IMG_2581-scaled.jpg?auto=format&w=1020&q=90&dpr=2" />
+            <div class="meta">
+                <p>by Author Name</p>
+                <p>Jan 1, 1970</p>
+            </div>
+            <div class="teaser">
+                <p>From which we spring rich in mystery muse about a mote of dust suspended in a sunbeam Cambrian explosion courage of our questions? Something incredible is waiting to be known stirred by starlight the carbon in our apple pies vanquish the impossible citizens of distant epochs stirred by starlight?</p>
+            </div>
+          </a>
+        </li>
+        <li class="card-item">
+          <a class="card" href="#">
+            <h2>Article title</h2>
+            <img src="https://simonsfoundation.imgix.net/wp-content/uploads/2024/05/09141203/IMG_2581-scaled.jpg?auto=format&w=1020&q=90&dpr=2" />
+            <div class="meta">
+                <p>by Author Name</p>
+                <p>Jan 1, 1970</p>
+            </div>
+            <div class="teaser">
+                <p>From which we spring rich in mystery muse about a mote of dust suspended in a sunbeam Cambrian explosion courage of our questions? Something incredible is waiting to be known stirred by starlight the carbon in our apple pies vanquish the impossible citizens of distant epochs stirred by starlight?</p>
+            </div>
+          </a>
+        </li>
+        <li class="card-item">
+          <a class="card" href="#">
+            <h2>Article title</h2>
+            <img src="https://simonsfoundation.imgix.net/wp-content/uploads/2024/05/09141203/IMG_2581-scaled.jpg?auto=format&w=1020&q=90&dpr=2" />
+            <div class="meta">
+                <p>by Author Name</p>
+                <p>Jan 1, 1970</p>
+            </div>
+            <div class="teaser">
+                <p>From which we spring rich in mystery muse about a mote of dust suspended in a sunbeam Cambrian explosion courage of our questions? Something incredible is waiting to be known stirred by starlight the carbon in our apple pies vanquish the impossible citizens of distant epochs stirred by starlight?</p>
+            </div>
+          </a>
+        </li>
+        <li class="card-item">
+          <a class="card" href="#">
+            <h2>Article title</h2>
+            <img src="https://simonsfoundation.imgix.net/wp-content/uploads/2024/05/09141203/IMG_2581-scaled.jpg?auto=format&w=1020&q=90&dpr=2" />
+            <div class="meta">
+                <p>by Author Name</p>
+                <p>Jan 1, 1970</p>
+            </div>
+            <div class="teaser">
+                <p>From which we spring rich in mystery muse about a mote of dust suspended in a sunbeam Cambrian explosion courage of our questions? Something incredible is waiting to be known stirred by starlight the carbon in our apple pies vanquish the impossible citizens of distant epochs stirred by starlight?</p>
+            </div>
+          </a>
+        </li>
+        <li class="card-item">
+          <a class="card" href="#">
+            <h2>Article title</h2>
+            <img src="https://simonsfoundation.imgix.net/wp-content/uploads/2024/05/09141203/IMG_2581-scaled.jpg?auto=format&w=1020&q=90&dpr=2" />
+            <div class="meta">
+                <p>by Author Name</p>
+                <p>Jan 1, 1970</p>
+            </div>
+            <div class="teaser">
+                <p>From which we spring rich in mystery muse about a mote of dust suspended in a sunbeam Cambrian explosion courage of our questions? Something incredible is waiting to be known stirred by starlight the carbon in our apple pies vanquish the impossible citizens of distant epochs stirred by starlight?</p>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </main>
+  <body>
+</html>
